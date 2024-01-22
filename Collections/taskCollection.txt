@@ -1,0 +1,23 @@
+
+
+{
+    task_name : "React",
+    task_doing_student_name:"Kohr",
+    task_doing_student_id:"S10", // user_mentor_id = task_doing_student_id
+    task_date:"15-10-2024",
+    task_assign_mentor:"G12", //mentor_id =task_assign_mentor
+    task_status :"pending",
+    task_deploy_link: "",
+    task_github_link :"",
+
+}
+{
+    task_name : "Node",
+    task_doing_student_name:"Joker",
+    task_doing_student_id:"S11", // user_mentor_id = task_doing_student_id
+    task_date:"18-10-2024",
+    task_assign_mentor:"G12", //mentor_id =task_assign_mentor
+    task_status :"submit",
+    task_deploy_link: "https://www.fiubcuhiVercel.com",
+    task_github_link :"https://www.rehangithub.com",
+}
