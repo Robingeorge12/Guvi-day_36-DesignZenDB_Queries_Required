@@ -1,0 +1,91 @@
+
+Design database for Zen class programme
+users
+codekata
+attendance
+topics
+tasks
+company_drives
+mentors
+
+
+
+
+// lookup -merge collecton;
+// merge - filtering data
+// dblClick.task.aggreg([{$lookup: {from: "topics", localField: task:"month", foreignField: topic"month", as: "topic"}}])
+// dblClick.topic.aggreg([])
+I ==> create DB <=====
+
+ 
+  
+II ===> "task" collection
+
+[                                                                                    
+  {
+_id:Object(B1),
+mantor:"x",
+date:new Date(),
+task:["react,"js","css"],
+submission:"pending",
+score:0 
+taskDeatils:{
+             "gitlink":null,
+              deploylink:null,
+              comment :"",
+              submitDate:new Date()
+    }
+   
+
+  },
+]    
+
+
+
+
+1. Find all the topics and tasks which are thought in the month of October
+
+steps => At first before merging the two collections by using "$lookup", we have to filter the date 
+         by using "$match" operator
+
+         db.topics.aggregate([{$match:{ "date":{$gt:"oct 1",lt:'oct 31'} } },{$lookup: {from :"task",localField:"_id",foreignField:"topic_id", as:"Alltopic"} }])
+
+2. Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+       db.company_drive.find({"date":{$gt:"oct 15 2020",$lt:"31 oct 2020"}})
+
+3. Find all the company drives and students who are appeared for the placement.
+
+      db.company_drive.aggregate([$lookup:{from:"users",localField:"attended_user_id",foreignField:"user_id", as:"student_attended" }])
+
+4. Find the number of problems solved by the user in codekata
+
+       * instead of getting whole users total_question_solved count , I try to fetch each user and theirs solved_count 
+       * for all user solved_count , i can put{$group:{ "_id":null}}
+
+       db.codekata.aggregate([{$match: {codekata_user_question_status:`${solved`}} },
+
+       {$group:{codekata_user_id:`${codekata_user_id`} ,codekata_user_name:{$first:"$codekata_user_name"},codekata_user_solved_date:{$first:"$codekata_user_solved_date"},"total_question_solved":{$sum:1 }  }},
+       {$project:{  codekata_user_name:1, codekata_user_solved_date:1 }}
+       ])
+
+5. Find all the mentors with who has the mentee's count more than 15
+
+   db.mentor.aggregate([
+    $lookup:{from:"users",localField:"mentor_id",foreignField:"user_mentor_id",  as :"studentMore_15_mentor" },
+   {$addField:{"student_count":{$size:"$studentMore_15_mentor"}  }},{$match :{$gt:15}}
+   ])
+
+6. Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+    db.attendance.aggregate([{$match:{"attend_date":{$gt:"15-10-2024",$lt:"31-10-2024"  }, attend_status:"absent" }},
+    {$lookup: {from:"users",localField:"attend_user_id", foreignField: "user_id", as: "list"  } },
+    {$match:{ "list.user_submission":"pending"  }},
+    {$group:{"_id":null ,"no_users":{$sum:1}  }}
+    ])
+   
+
+
+
+
+

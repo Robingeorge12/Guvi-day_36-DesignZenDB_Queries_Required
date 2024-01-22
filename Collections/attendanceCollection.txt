@@ -1,0 +1,18 @@
+{
+    attend_date:"15-10-2024",
+    attend_user_id:"S10", // attend_user_id = user_id
+    attend_status:"absent", // default:absent
+
+},
+{
+    attend_date:"18-10-2024",
+    attend_user_id:"S11", // attend_user_id = user_id
+    attend_status:"present", // default:absent
+
+},
+{
+    attend_date:"25-10-2024",
+    attend_user_id:"S12", // attend_user_id = user_id
+    attend_status:"present", // default:absent
+
+}

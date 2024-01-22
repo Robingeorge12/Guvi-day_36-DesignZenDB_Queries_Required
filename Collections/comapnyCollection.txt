@@ -1,0 +1,7 @@
+
+db.comapny_drive([
+{comapny_name:"LG",date_drive:"12-10-2023","role":"fsd","job_location":"Chennai","company_id":11, attended_user_id:"S10" // attended_user_id=user_id},
+{comapny_name:"BMW",date_drive:"19-10-2023","role":"React js","job_location":"Mumbai","company_id":12,attended_user_id:"S11"},
+{comapny_name:"Zoho",date_drive:"22-10-2023","role":"Node js","job_location":"Kerala","company_id":13,attended_user_id:"S12"},
+
+])
