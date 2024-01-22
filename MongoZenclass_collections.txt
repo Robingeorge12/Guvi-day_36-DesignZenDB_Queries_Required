@@ -13,32 +13,10 @@ mentors
 
 // lookup -merge collecton;
 // merge - filtering data
-// dblClick.task.aggreg([{$lookup: {from: "topics", localField: task:"month", foreignField: topic"month", as: "topic"}}])
-// dblClick.topic.aggreg([])
-I ==> create DB <=====
+
+I ==> create DB  queries<=====
 
  
-  
-II ===> "task" collection
-
-[                                                                                    
-  {
-_id:Object(B1),
-mantor:"x",
-date:new Date(),
-task:["react,"js","css"],
-submission:"pending",
-score:0 
-taskDeatils:{
-             "gitlink":null,
-              deploylink:null,
-              comment :"",
-              submitDate:new Date()
-    }
-   
-
-  },
-]    
 
 
 
